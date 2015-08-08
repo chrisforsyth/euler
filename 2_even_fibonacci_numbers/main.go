@@ -11,32 +11,33 @@ import "fmt"
 
 func main() {
 	sum := 0
-	c := fib_generator()
-	
+	c := fibGenerator()
+
 	for n := 0; ; n++ {
 		val := <-c
-		
-		if (val > 4000000) { break } // if the value is greater than four million, break out of loop
-		
-		if (val%2 == 0) { // if the value is even, add it to sum
+
+		if val > 4000000 {
+			break
+		} // if the value is greater than four million, break out of loop
+
+		if val%2 == 0 { // if the value is even, add it to sum
 			sum += val
 		}
 	}
-	
-	fmt.Println(sum)	
-}
 
+	fmt.Println(sum)
+}
 
 // This method is used to calculate the next Fibonacci number in the sequence
 // The iterator returns the next value on each call
-func fib_generator() chan int {
+func fibGenerator() chan int {
 	c := make(chan int)
-	
+
 	go func() {
-		for i,j := 0, 1; ; i, j = i+j,i {
+		for i, j := 0, 1; ; i, j = i+j, i {
 			c <- i // return i which is the sum of i + j
 		}
 	}()
-	
+
 	return c
 }
