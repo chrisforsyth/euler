@@ -13,7 +13,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Euler Project 8")
+	fmt.Println("Euler Project ")
 
 	for c := 3; c <= 1000; c++ {
 		for b := 2; b < c; b++ {
